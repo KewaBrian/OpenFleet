@@ -1,5 +1,9 @@
 # OpenFleet
 
+This repository is a maintained customization by **KewaBrian** of the
+[MIT-licensed OpenFleet project](https://github.com/warrengalyen/OpenFleet).
+The original author and license are preserved in [LICENSE](LICENSE).
+
 ![CI Status](https://github.com/warrengalyen/OpenFleet/actions/workflows/ci.yml/badge.svg)
 
 **A full-stack fleet and maintenance management system built with .NET 8 and React.**
@@ -129,7 +133,7 @@ PostgreSQL
 Clone the repository.
 
 ```bash
-git clone https://github.com/warrengalyen/OpenFleet.git
+git clone https://github.com/KewaBrian/OpenFleet.git
 cd OpenFleet
 ```
 
