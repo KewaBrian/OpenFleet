@@ -192,6 +192,26 @@ public class MaintenanceScheduleService
         return vehicleGroups.Concat(assetGroups).ToList().AsReadOnly();
     }
 
+    public async Task<IReadOnlyList<MaintenanceScheduleResponse>> GetUpcomingAsync(
+        DateTime now,
+        CancellationToken cancellationToken = default)
+    {
+        var leadDays = (await _settingsProvider.GetValuesAsync(cancellationToken)).MaintenanceReminderLeadDays;
+        var schedules = await _context.MaintenanceSchedules
+            .Include(s => s.Vehicle)
+            .Include(s => s.Asset)
+            .Where(s => s.IsActive)
+            .AsNoTracking()
+            .ToListAsync(cancellationToken);
+
+        return schedules
+            .Where(s => MaintenanceDueCalculator.IsUpcoming(s, now, leadDays, s.Vehicle?.Mileage))
+            .OrderBy(s => MaintenanceDueCalculator.NextDueDate(s))
+            .Select(s => BuildResponse(s, s.Vehicle?.Mileage))
+            .ToList()
+            .AsReadOnly();
+    }
+
     private async Task<MaintenanceScheduleResponse?> LoadResponseAsync(
         Guid id,
         int? currentMileage,

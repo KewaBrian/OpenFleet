@@ -45,7 +45,7 @@ OpenFleet models those workflows while keeping the codebase approachable for dev
 | Fleet Management       | Vehicle and asset management with filtering, validation, and department assignment |
 | Work Orders            | Complete lifecycle with status changes, priorities, labor tracking, and notes      |
 | Inspections            | Inspection workflow with automatic work order creation                             |
-| Preventive Maintenance | Mileage and time-based maintenance schedules                                       |
+| Preventive Maintenance | Mileage and time-based maintenance schedules, due alerts, and upcoming service reminders |
 | Authentication         | JWT authentication with role-based authorization                                   |
 | Audit Log              | Immutable audit history                                                            |
 | Integrations           | Mock external integrations                                                         |

@@ -159,4 +159,31 @@ public class MaintenanceDueCalculatorTests
         Assert.False(MaintenanceDueCalculator.IsDue(schedule, DateTime.UtcNow, null));
         Assert.True(MaintenanceDueCalculator.IsDueOrWithinLeadDays(schedule, DateTime.UtcNow, 7, null));
     }
+
+    [Fact]
+    public void IsUpcoming_returns_true_for_future_date_inside_lead_window()
+    {
+        var now = new DateTime(2026, 9, 24, 12, 0, 0, DateTimeKind.Utc);
+        var schedule = DateSchedule(30, now.AddDays(-25));
+
+        Assert.True(MaintenanceDueCalculator.IsUpcoming(schedule, now, 7));
+    }
+
+    [Fact]
+    public void IsUpcoming_returns_false_for_due_schedule()
+    {
+        var now = new DateTime(2026, 9, 24, 12, 0, 0, DateTimeKind.Utc);
+        var schedule = DateSchedule(30, now.AddDays(-31));
+
+        Assert.False(MaintenanceDueCalculator.IsUpcoming(schedule, now, 7));
+    }
+
+    [Fact]
+    public void IsUpcoming_returns_false_when_future_date_is_outside_lead_window()
+    {
+        var now = new DateTime(2026, 9, 24, 12, 0, 0, DateTimeKind.Utc);
+        var schedule = DateSchedule(30, now.AddDays(-10));
+
+        Assert.False(MaintenanceDueCalculator.IsUpcoming(schedule, now, 7));
+    }
 }

@@ -7,9 +7,10 @@ import { Button } from '@/components/ui/Button'
 import { useAuth } from '@/hooks/useAuth'
 import { AuthPolicy } from '@/lib/auth'
 import { MaintenanceDueList } from './MaintenanceDueList'
+import { MaintenanceUpcomingList } from './MaintenanceUpcomingList'
 import { MaintenanceScheduleList } from './MaintenanceScheduleList'
 
-type Tab = 'due' | 'schedules'
+type Tab = 'due' | 'upcoming' | 'schedules'
 
 export function MaintenancePage() {
   const navigate = useNavigate()
@@ -58,6 +59,19 @@ export function MaintenancePage() {
           </button>
           <button
             type="button"
+            onClick={() => setTab('upcoming')}
+            className={clsx(
+              'inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
+              tab === 'upcoming'
+                ? 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-white'
+                : 'text-gray-500 hover:text-gray-900 dark:text-gray-400',
+            )}
+            aria-pressed={tab === 'upcoming'}
+          >
+            Upcoming
+          </button>
+          <button
+            type="button"
             onClick={() => setTab('schedules')}
             className={clsx(
               'inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
@@ -92,6 +106,8 @@ export function MaintenancePage() {
 
       {tab === 'due' ? (
         <MaintenanceDueList />
+      ) : tab === 'upcoming' ? (
+        <MaintenanceUpcomingList />
       ) : (
         <MaintenanceScheduleList activeOnly={!showInactive} />
       )}

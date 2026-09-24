@@ -20,6 +20,11 @@ export const maintenanceSchedulesService = {
     return data
   },
 
+  async getUpcoming(): Promise<MaintenanceScheduleResponse[]> {
+    const { data } = await api.get<MaintenanceScheduleResponse[]>('/maintenance-schedules/upcoming')
+    return data
+  },
+
   async get(id: string): Promise<MaintenanceScheduleResponse> {
     const { data } = await api.get<MaintenanceScheduleResponse>(`/maintenance-schedules/${id}`)
     return data

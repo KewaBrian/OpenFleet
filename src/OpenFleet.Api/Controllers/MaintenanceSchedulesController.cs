@@ -39,6 +39,15 @@ public class MaintenanceSchedulesController : ControllerBase
         return Ok(results);
     }
 
+    /// <summary>List active schedules approaching their next service date.</summary>
+    [HttpGet("upcoming")]
+    [ProducesResponseType(typeof(IEnumerable<MaintenanceScheduleResponse>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetUpcoming(CancellationToken cancellationToken)
+    {
+        var results = await _scheduleService.GetUpcomingAsync(DateTime.UtcNow, cancellationToken);
+        return Ok(results);
+    }
+
     /// <summary>Get a single maintenance schedule by ID.</summary>
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(MaintenanceScheduleResponse), StatusCodes.Status200OK)]

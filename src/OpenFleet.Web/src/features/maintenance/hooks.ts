@@ -11,6 +11,7 @@ export const maintenanceKeys = {
   lists: () => [...maintenanceKeys.all, 'list'] as const,
   list: (activeOnly: boolean) => [...maintenanceKeys.lists(), { activeOnly }] as const,
   due: () => [...maintenanceKeys.all, 'due'] as const,
+  upcoming: () => [...maintenanceKeys.all, 'upcoming'] as const,
   details: () => [...maintenanceKeys.all, 'detail'] as const,
   detail: (id: string) => [...maintenanceKeys.details(), id] as const,
 }
@@ -26,6 +27,13 @@ export function useMaintenanceDue() {
   return useQuery({
     queryKey: maintenanceKeys.due(),
     queryFn: maintenanceSchedulesService.getDue,
+  })
+}
+
+export function useMaintenanceUpcoming() {
+  return useQuery({
+    queryKey: maintenanceKeys.upcoming(),
+    queryFn: maintenanceSchedulesService.getUpcoming,
   })
 }
 

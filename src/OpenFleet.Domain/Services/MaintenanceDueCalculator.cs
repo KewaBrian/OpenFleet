@@ -23,6 +23,20 @@ public static class MaintenanceDueCalculator
         return nextDue.HasValue && now >= nextDue.Value.AddDays(-leadDays);
     }
 
+    /// <summary>Returns true when a schedule is not yet due but falls within the reminder window.</summary>
+    public static bool IsUpcoming(
+        MaintenanceSchedule schedule,
+        DateTime now,
+        int leadDays,
+        int? currentMileage = null)
+    {
+        if (leadDays <= 0 || IsDue(schedule, now, currentMileage) || !schedule.DayInterval.HasValue)
+            return false;
+
+        var nextDue = NextDueDate(schedule);
+        return nextDue.HasValue && nextDue.Value > now && nextDue.Value <= now.AddDays(leadDays);
+    }
+
     /// <summary>
     /// Returns true if the schedule is due based on date interval, mileage interval, or both.
     /// A schedule that has never been performed is always considered due.
