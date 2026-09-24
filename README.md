@@ -100,28 +100,7 @@ PostgreSQL
 
 ---
 
-## Quick Start
 
-Clone the repository.
-
-```bash
-git clone https://github.com/KewaBrian/OpenFleet.git
-cd OpenFleet
-```
-
-Start the backend.
-
-```bash
-docker compose up --build
-```
-
-Start the frontend.
-
-```bash
-cd src/OpenFleet.Web
-npm install
-npm run dev
-```
 
 Open:
 
