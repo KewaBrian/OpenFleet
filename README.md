@@ -9,15 +9,6 @@ Try the hosted demo: [http://openfleet.mechanikadesign.com/](http://openfleet.me
 | ------------------------------------------------- | ----------- | ---------------- |
 | [viewer@openfleet.io](mailto:viewer@openfleet.io) | Viewer@1234 | Read-only Viewer |
 
-The demo runs on Render’s free tier:
-
-- **Cold start:** The API spins down after about 15 minutes of inactivity. The first request after idle can take around **30–60 seconds** to wake up.
-
-![Dashboard overview](docs/images/dashboard-overview.png)
-
-More screenshots: [docs/screenshots.md](docs/screenshots.md)
-
----
 
 ## Why OpenFleet?
 
