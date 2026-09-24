@@ -1,14 +1,5 @@
 # OpenFleet
 
-This repository is a maintained customization by **KewaBrian** of the
-[MIT-licensed OpenFleet project](https://github.com/warrengalyen/OpenFleet).
-The original author and license are preserved in [LICENSE](LICENSE).
-
-![CI Status](https://github.com/warrengalyen/OpenFleet/actions/workflows/ci.yml/badge.svg)
-
-**A full-stack fleet and maintenance management system built with .NET 8 and React.**
-
-OpenFleet is an open source application for managing vehicles, maintenance, inspections, work orders, inventory, vendors, reporting, and fleet operations. It combines a .NET 8 REST API with a React frontend and focuses on building a maintainable, well-tested business application using modern development practices.
 
 ## Live Demo
 
@@ -99,18 +90,8 @@ Rather than focusing on individual CRUD screens, OpenFleet models the workflows 
 | Containers       | Docker                                    |
 | CI               | GitHub Actions                            |
 
----
 
-## Architecture
 
-OpenFleet consists of two independent applications.
-
-- **OpenFleet.Api** exposes the REST API and contains the business logic.
-- **OpenFleet.Web** provides the user interface and communicates with the API using JWT authentication.
-
-The backend follows Clean Architecture to separate domain logic from infrastructure concerns. The frontend uses a feature-based organization that keeps related components, routes, and services together.
-
-```text
 React SPA
      │
  REST API
@@ -156,15 +137,7 @@ Open:
 - Frontend: [http://localhost:5173](http://localhost:5173)
 - Swagger: [http://localhost:8080/swagger](http://localhost:8080/swagger)
 
-Default administrator account (local development):
 
-| Email                                           | Password   |
-| ----------------------------------------------- | ---------- |
-| [admin@openfleet.io](mailto:admin@openfleet.io) | Admin@1234 |
-
-For the hosted demo, use the Viewer account in [Live Demo](#live-demo) above.
-
----
 
 ## Documentation
 
@@ -187,18 +160,3 @@ The repository includes additional documentation for the application's architect
 
 ---
 
-## Roadmap
-
-See [docs/roadmap.md](docs/roadmap.md).
-
----
-
-## Contributing
-
-Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
-
----
-
-## License
-
-Licensed under the MIT License.
